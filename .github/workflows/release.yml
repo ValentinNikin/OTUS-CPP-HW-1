@@ -9,11 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
       - uses: actions/checkout@v3
-      - name: Preparing dependencies
       - run: sudo apt-get update && sudo apt-get install libgtest-dev -y
-      - name: Building project
       - run: mkdir -p build && cd build
       - run: cmake .. -DPATCH_VERSION=${{ github.run_number }} -DENABLED_TESTING=ON
       - run: cmake --build .
